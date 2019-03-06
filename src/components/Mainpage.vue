@@ -8,6 +8,7 @@
 					<el-col :span="6">
 						<div class="rec-item">
 							<i class="el-icon-goods"></i>
+							购物
 						</div>
 					</el-col>
 					<el-col :span="6">
@@ -55,5 +56,10 @@ export default {
 		width 75%
 		.recommend
 			width 80%
-			margin 40px auto 0 auto 
+			margin-top 40px 
+			.rec-item i
+				font-size 55px
+				font-weight 100
+				color #ff410f
+				margin-left 33%
 </style>
