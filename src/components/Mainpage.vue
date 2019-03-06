@@ -8,7 +8,6 @@
 					<el-col :span="6">
 						<div class="rec-item">
 							<i class="el-icon-goods"></i>
-							购物
 						</div>
 					</el-col>
 					<el-col :span="6">
