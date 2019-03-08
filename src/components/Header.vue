@@ -50,7 +50,6 @@ export default {
 		height 70px
 		width 100%
 		max-width: 1440px
-		border-bottom: 1px solid #9e9e9e
 		background #fff
 		.topNav
 			width 90%

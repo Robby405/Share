@@ -1,8 +1,9 @@
 <template>
   <div class="carousel">
-    <el-carousel :interval="3000" type="card" :height="Height" :autoplay="play">
-      <el-carousel-item v-for="item in 6" :key="item">
-      <h3>{{ item }}</h3>
+    <el-carousel :interval="3000" type="card" :height="Height">
+      <el-carousel-item v-for="item in carousel" :key="item.id">
+      <!-- <h3>{{ item }}</h3> -->
+      <img :src="item.src" alt="">
       </el-carousel-item>
     </el-carousel>
     <el-row class="second-menu">
@@ -57,7 +58,32 @@ export default {
   data() {
     return{
       Height: '300px',
-      play: false
+      carousel: [
+        {
+          "id": 1,
+          "src": "https://picjumbo.com/wp-content/uploads/cute-puppy-free-photo-2210x1473.jpg"
+        },
+        {
+          "id": 2,
+          "src": "https://foter.com/photos/394/cars-and-buses-on-street.jpg"
+        },
+        {
+          "id": 3,
+          "src": "https://cdn.pixabay.com/photo/2019/02/25/19/22/brownie-4020342_960_720.jpg"
+        },
+        {
+          "id": 4,
+          "src": "https://picjumbo.com/wp-content/uploads/business-free-photos-download-2210x1473.jpg"
+        },
+        {
+          "id": 5,
+          "src": "https://picjumbo.com/wp-content/uploads/blueberries-free-photo-2210x1473.jpg"
+        },
+        {
+          "id": 6,
+          "src": "https://picjumbo.com/wp-content/uploads/baking-salmon-fillets-2210x1473.jpg"
+        },
+      ]
     }
   }
 }
@@ -65,28 +91,29 @@ export default {
 <style lang="stylus">
   .carousel
     position relative
-    padding-top 95px
+    padding-top 75px
     .el-carousel
-      .el-carousel__item h3
-        color #475669
-        font-size 14px
-        opacity 0.75
-        line-height 300px
-        margin 0
-      .el-carousel__item:nth-child(2n)
-        background-color #99a9bf
-      .el-carousel__item:nth-child(2n+1)
-        background-color #d3dce6
-      .el-carousel__item--card
-        width 60%
+      .el-carousel__container
+        height 350px !important
+        .el-carousel__item:nth-child(2n)
+          background-color #99a9bf
+        .el-carousel__item:nth-child(2n+1)
+          background-color #d3dce6
+        .el-carousel__item--card
+          width 65%
+          img
+            width 100%
+            height 100%
     .second-menu
       position absolute
       top: 0
-      left: 3%
+      left: 5%
       z-index: 8
-      width 265px
+      width 19%
+      max-width 265px
       overflow hidden
-      padding-top 95px
+      box-shadow 3px 3px 5px #888888
+      margin-top 95px
       a
         display block 
         height 32px
