@@ -26,7 +26,9 @@
 						</div>
 						<div class="user">
 							<div class="login">
-									<router-link to="/login">登录/注册</router-link>
+									<router-link to="/login">登录</router-link>
+									/
+									<router-link to="/register">注册</router-link>
 							</div>
 						</div>
 					</div>
@@ -46,7 +48,7 @@ export default {
 <style lang="stylus">
 	.header
 		position fixed
-		z-index 9
+		z-index 11
 		height 70px
 		width 100%
 		max-width: 1440px
@@ -87,6 +89,9 @@ export default {
 						a:hover
 							text-decoration none 
 							color #ff410f
+						.router-link-exact-active
+							color #ff410f
+							font-weight bold
 			.navRight
 				float right
 				.search
@@ -107,14 +112,11 @@ export default {
 						overflow: hidden
 						text-overflow: ellipsis
 						white-space: nowrap
-					input:focus
-							width 200px
 				.user
 					display inline-block
 					.login a
 						display inline-block
 						text-decoration none
-						margin 0 10px
 						height 50px
 						line-height 50px
 						color #4a4a4a

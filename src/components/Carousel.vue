@@ -61,19 +61,19 @@ export default {
       carousel: [
         {
           "id": 1,
-          "src": "https://picjumbo.com/wp-content/uploads/cute-puppy-free-photo-2210x1473.jpg"
+          "src": "https://picjumbo.com/wp-content/uploads/business-free-photos-download-2210x1473.jpg"
         },
         {
           "id": 2,
-          "src": "https://foter.com/photos/394/cars-and-buses-on-street.jpg"
+          "src": "https://picjumbo.com/wp-content/uploads/gold-plates-wedding-table-settings-and-decorations-close-up_free_stock_photos_picjumbo_DSC06244-2210x1473.jpg"
         },
         {
           "id": 3,
-          "src": "https://cdn.pixabay.com/photo/2019/02/25/19/22/brownie-4020342_960_720.jpg"
+          "src": "https://picjumbo.com/wp-content/uploads/i-love-you-heart-helium-balloon-free-photo-DSC07875-2210x1473.jpg"
         },
         {
           "id": 4,
-          "src": "https://picjumbo.com/wp-content/uploads/business-free-photos-download-2210x1473.jpg"
+          "src": "https://picjumbo.com/wp-content/uploads/hamburgers-free-photo-DSC07983-2210x1473.jpg"
         },
         {
           "id": 5,

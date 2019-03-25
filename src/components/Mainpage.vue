@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="app-main">
 		<v-header></v-header>
 		<v-carousel></v-carousel>
 		<div class="view-body">
@@ -81,39 +81,45 @@ export default {
 }
 </script>
 <style lang="stylus">
-	.view-body
-		position relative
-		left 25%
-		width 75%
-		.recommend
-			width 80%
-			margin-top 40px 
-			margin-left 3%
-			.rec-item i
-				font-size 45px
-				font-weight 100
-				color #ff410f
-				margin-left 37%
-			.rec-name
-				font-size 16px
-				letter-spacing 1px
-				color #4a4a4a
-				margin-top 15px
-				text-align center
-	.view-container
-		position relative
-		left 25%
-		width 75%
-		margin-top 40px
-		.life-recommend
-			width 98%
-			margin 0 auto
-			h2
-				margin-bottom 15px
-				font-size 24px
-				font-weight 500
-				font-family PingFang SC
-				white-space nowrap
-			.card-container .el-col
-				margin-bottom 20px
+body
+	background-color: #eee
+	.app-main
+		max-width 1440px
+		background-color #fff
+		margin 0 auto
+		.view-body
+			position relative
+			left 25%
+			width 75%
+			.recommend
+				width 80%
+				margin-top 40px 
+				margin-left 3%
+				.rec-item i
+					font-size 45px
+					font-weight 100
+					color #ff410f
+					margin-left 37%
+				.rec-name
+					font-size 16px
+					letter-spacing 1px
+					color #4a4a4a
+					margin-top 15px
+					text-align center
+		.view-container
+			position relative
+			left 25%
+			width 75%
+			margin-top 40px
+			.life-recommend
+				width 98%
+				margin 0 auto
+				h2
+					margin-bottom 15px
+					font-size 24px
+					font-weight 500
+					font-family PingFang SC
+					white-space nowrap
+				.card-container .el-col
+					margin-bottom 20px
 </style>
