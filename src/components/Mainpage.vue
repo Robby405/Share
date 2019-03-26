@@ -2,6 +2,51 @@
 	<div class="app-main">
 		<v-header></v-header>
 		<v-carousel></v-carousel>
+		<el-row class="second-menu">
+      <el-col :span="24">	
+        <el-menu
+          default-active="1"
+          class="el-menu-vertical-demo">
+          <a>推荐</a>
+          <el-menu-item index="1">
+            <i class="el-icon-location"></i>
+            <span slot="title">导航一</span>
+          </el-menu-item>
+          <el-menu-item index="2">
+            <i class="el-icon-menu"></i>
+            <span slot="title">导航二</span>
+          </el-menu-item>
+          <el-menu-item index="3">
+            <i class="el-icon-document"></i>
+            <span slot="title">导航三</span>
+          </el-menu-item>
+          <el-menu-item index="4">
+            <i class="el-icon-setting"></i>
+            <span slot="title">导航四</span>
+          </el-menu-item>
+          <el-menu-item index="5">
+            <i class="el-icon-setting"></i>
+            <span slot="title">导航五</span>
+          </el-menu-item>
+          <el-menu-item index="6">
+            <i class="el-icon-location"></i>
+            <span slot="title">导航一</span>
+          </el-menu-item>
+          <el-menu-item index="7">
+            <i class="el-icon-menu"></i>
+            <span slot="title">导航二</span>
+          </el-menu-item>
+          <el-menu-item index="8">
+            <i class="el-icon-document"></i>
+            <span slot="title">导航三</span>
+          </el-menu-item>
+          <el-menu-item index="9">
+            <i class="el-icon-setting"></i>
+            <span slot="title">导航四</span>
+          </el-menu-item>
+        </el-menu>
+      </el-col>
+    </el-row>
 		<div class="view-body">
 			<div class="recommend">
 				<el-row :gutter="20">
@@ -84,9 +129,34 @@ export default {
 body
 	background-color: #eee
 	.app-main
+		position relative
 		max-width 1440px
 		background-color #fff
 		margin 0 auto
+		.second-menu
+			position absolute
+			top: 0
+			left: 5%
+			z-index: 8
+			width 19%
+			max-width 265px
+			overflow hidden
+			box-shadow 3px 3px 5px #888888
+			margin-top 95px
+			a
+				display block 
+				height 32px
+				line-height 32px
+				font-size 14px
+				font-weight bold
+				letter-spacing 2px 
+				margin 0 27px
+				padding-top: 20px
+				border-bottom 3px solid #000
+			.is-active
+				color #ff410f
+			.el-menu-item:hover,.el-menu-item:focus
+				background-color #fff1ed
 		.view-body
 			position relative
 			left 25%

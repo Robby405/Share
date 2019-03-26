@@ -7,38 +7,43 @@
           <el-col :span="24">
             <el-menu
               default-active="1"
-              class="el-menu-vertical-demo"
-              @open="handleOpen"
-              @close="handleClose">
+              class="el-menu-vertical-demo">
               <el-menu-item index="1">
                 <i class="iconfont icon-wode"></i>
-                <span slot="title">我的资料</span>
+                <span slot="title">
+                  <router-link to="/personal/profile">我的资料</router-link>
+                </span>
               </el-menu-item>
               <el-menu-item index="2">
                 <i class="iconfont icon-dingdan"></i>
-                <span slot="title">我发表的</span>
+                <span slot="title">
+                  <router-link to="/personal/shares">我分享的</router-link>
+                  </span>
               </el-menu-item>
               <el-menu-item index="3">
                 <i class="iconfont icon-heart"></i>
-                <span slot="title">我喜欢的</span>
+                <span slot="title">
+                  <router-link to="/personal/likes">我喜欢的</router-link>
+                  </span>
               </el-menu-item>
               <el-menu-item index="4">
                 <i class="iconfont icon-pingjia"></i>
-                <span slot="title">我评论的</span>
+                <span slot="title">
+                  <router-link to="/personal/comments">我评论的</router-link>
+                </span>
               </el-menu-item>
               <el-menu-item index="5">
                 <i class="iconfont icon-faxian"></i>
-                <span slot="title">我关注的</span>
+                <span slot="title">
+                  <router-link to="/personal/follows">我关注的</router-link>
+                </span>
               </el-menu-item>
             </el-menu>
           </el-col>
         </el-row>
       </div>
       <div class="content">
-        <el-container>
-          <el-header>我的资料</el-header>
-          <el-main>Main</el-main>
-        </el-container>
+        <router-view></router-view>
       </div>
     </div>
   </div>    
@@ -52,7 +57,7 @@ export default {
     }
   },
   components: {
-    'v-header': header
+    'v-header': header,
   }
 }
 </script>
@@ -60,7 +65,7 @@ export default {
 @import url('//at.alicdn.com/t/font_1080948_elehiin2qv.css');
   .personal-wrapper
     background-color #fff
-    padding-top 95px
+    padding-top 115px
     .navbar
       display inline-block
       width 40%
@@ -80,6 +85,11 @@ export default {
               font-weight bold
             span
               color #4a4a4a
+              a
+                text-decoration none
+                color #333
+                display inline-block
+                width 100%
           .el-menu-item:hover
             outline 0
             background-color #eee
@@ -90,7 +100,7 @@ export default {
     .content
       display inline-block
       vertical-align top
-      width 60%
+      width 35%
       .el-container
         background-color #fff
         .el-header
@@ -102,4 +112,5 @@ export default {
           padding 0
         .el-main
           padding 0
+          border-top 1px solid #f0f0f0
 </style>

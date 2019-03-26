@@ -5,7 +5,11 @@ import Find from '../components/Find'
 import Personal from '../components/Personal'
 import Login from '../components/Login'
 import Register from '../components/Register'
-
+import Profile from '../components/personal/Profile'
+import Share from '../components/personal/Share'
+import Like from '../components/personal/Like'
+import Comment from '../components/personal/Comment'
+import Follow from '../components/personal/Follow'
 Vue.use(Router)
 
 export default new Router({
@@ -18,7 +22,25 @@ export default new Router({
     component: Find
   }, {
     path: '/personal',
-    component: Personal
+    component: Personal,
+    children: [{
+      path: 'profile',
+      component: Profile
+    },
+    {
+      path: 'shares',
+      component: Share
+    },{
+      path: 'likes',
+      component: Like
+    },
+    {
+      path: 'comments',
+      component: Comment
+    },{
+      path: 'follows',
+      component: Follow
+    }]
   },{
       path: '/login',
       component: Login

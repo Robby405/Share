@@ -53,6 +53,7 @@ export default {
 		width 100%
 		max-width: 1440px
 		background #fff
+		border-bottom 1px solid #f0f0f0
 		.topNav
 			width 90%
 			max-width 1230px

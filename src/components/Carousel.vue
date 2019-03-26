@@ -6,51 +6,7 @@
       <img :src="item.src" alt="">
       </el-carousel-item>
     </el-carousel>
-    <el-row class="second-menu">
-      <el-col :span="24">	
-        <el-menu
-          default-active="1"
-          class="el-menu-vertical-demo">
-          <a>推荐</a>
-          <el-menu-item index="1">
-            <i class="el-icon-location"></i>
-            <span slot="title">导航一</span>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
-          <el-menu-item index="3">
-            <i class="el-icon-document"></i>
-            <span slot="title">导航三</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航四</span>
-          </el-menu-item>
-          <el-menu-item index="5">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航五</span>
-          </el-menu-item>
-          <el-menu-item index="6">
-            <i class="el-icon-location"></i>
-            <span slot="title">导航一</span>
-          </el-menu-item>
-          <el-menu-item index="7">
-            <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
-          </el-menu-item>
-          <el-menu-item index="8">
-            <i class="el-icon-document"></i>
-            <span slot="title">导航三</span>
-          </el-menu-item>
-          <el-menu-item index="9">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航四</span>
-          </el-menu-item>
-        </el-menu>
-      </el-col>
-    </el-row>
+   
   </div>
 </template>
 <script>
@@ -90,8 +46,7 @@ export default {
 </script>
 <style lang="stylus">
   .carousel
-    position relative
-    padding-top 75px
+    padding-top 70px
     .el-carousel
       .el-carousel__container
         height 350px !important
@@ -104,24 +59,4 @@ export default {
           img
             width 100%
             height 100%
-    .second-menu
-      position absolute
-      top: 0
-      left: 5%
-      z-index: 8
-      width 19%
-      max-width 265px
-      overflow hidden
-      box-shadow 3px 3px 5px #888888
-      margin-top 95px
-      a
-        display block 
-        height 32px
-        line-height 32px
-        font-size 14px
-        font-weight bold
-        letter-spacing 2px 
-        margin 0 27px
-        padding-top: 20px
-        border-bottom 3px solid #000
 </style>
