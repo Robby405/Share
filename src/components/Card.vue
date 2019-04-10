@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <el-container  >
+  <div class="card">
+    <el-container>
       <el-main>
         <div class="img">
           <img src="https://cdn.dribbble.com/users/59947/screenshots/6133129/shipwreck_island_dribbble.jpg" alt="">
@@ -46,17 +46,17 @@
       <span>
         <el-container>
           <el-header>
-            <el-row :gutter=10>
-              <el-col :span=2>
+            <el-row :gutter="10">
+              <el-col :span="2">
                 <a href="">
                   <img src="https://picjumbo.com/wp-content/uploads/woman-on-carousel-swing-ride_free_stock_photos_picjumbo_HNCK8794-2210x1473.jpg" alt="">
                 </a>
               </el-col>
-              <el-col :span=16>
+              <el-col :span="16">
                 <h1>Racing car of F1</h1>
                 <h2>by Anton Firtsler (kit8) for Kit8</h2>
               </el-col>
-              <el-col :span=6>
+              <el-col :span="6">
                 <el-button>
                   <i class="iconfont icon-heart-fill"></i>
                   Like
@@ -153,6 +153,15 @@
                   </ol>
                 </div>
               </div>
+              <el-pagination
+                small
+                layout="prev, pager, next"
+                :total="50">
+              </el-pagination>
+              <div class="writeComment">
+                <textarea placeholder="请写下你的评论..."></textarea>
+                <el-button type="primary" size="mini" round>发表</el-button>
+              </div>
             </el-main>
             <el-aside>
               <div class="screenshot-meta">
@@ -177,7 +186,8 @@ export default {
 }
 </script>
 <style lang="stylus">
-  @import url('//at.alicdn.com/t/font_1080948_lmezl2ohfk.css');
+@import url('//at.alicdn.com/t/font_1080948_lmezl2ohfk.css');
+.card
   .el-container
     background-color #eee
     padding-bottom 10px
@@ -248,10 +258,11 @@ export default {
         height 16px
         margin 1px 5px 0 0
         border-radius 50%
-  .el-dialog__wrapper
+  >.el-dialog__wrapper
     background-color rgba(0,0,0,.6)
     .el-dialog
       max-width 800px
+      min-width 620px
       border-radius 10px
       .el-dialog__header
         padding 0
@@ -303,6 +314,9 @@ export default {
               background-color #99a9bf      
             .el-carousel__item:nth-child(2n+1)
               background-color #d3dce6
+          .el-carousel__indicators
+            li
+              border-top none
         .el-container
           margin-top 30px
           .el-main
@@ -333,7 +347,7 @@ export default {
                     color #757575
                 ol
                   list-style none
-                  li
+                  >li
                     float none
                     margin 0 0 20px 0
                     padding 0
@@ -341,6 +355,7 @@ export default {
                     line-height 1.4em
                     color #555
                     border-bottom 1px solid #ddd
+                    border-top none
                     h2
                       margin  0 0 2px 0
                       font-size 16px
@@ -384,6 +399,26 @@ export default {
                         color #999
                         &:hover
                           color #666
+            .el-pagination
+              text-align center
+              >ul>li
+                padding 0  
+            .writeComment
+              display flex
+              margin-top 15px
+              >textarea
+                width 75%
+                line-height 28px
+                height 28px
+                border-color #909090
+                border-radius 15px
+                padding-left 10px
+                flex 1
+                &:focus
+                  outline none
+              >.el-button
+                margin-left 10px
+                width auto
           .el-aside
             width 40%
 </style>

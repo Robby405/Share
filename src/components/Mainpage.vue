@@ -82,23 +82,23 @@
 			<div class="life-recommend">
 				<h2>推荐1</h2>
 				<div class="card-container">
-					<el-row :gutter=20>
-						<el-col :span=6>
+					<el-row :gutter="20">
+						<el-col :span="6">
 							<v-card></v-card>
 						</el-col>
-						<el-col :span=6>
+						<el-col :span="6">
 							<v-card></v-card>
 						</el-col>
-						<el-col :span=6>
+						<el-col :span="6">
 							<v-card></v-card>
 						</el-col>
-						<el-col :span=6>
+						<el-col :span="6">
 							<v-card></v-card>
 						</el-col>
-						<el-col :span=6>
+						<el-col :span="6">
 							<v-card></v-card>
 						</el-col>
-						<el-col :span=6>
+						<el-col :span="6">
 							<v-card></v-card>
 						</el-col>
 					</el-row>
@@ -127,10 +127,12 @@ export default {
 </script>
 <style lang="stylus">
 body
+	overflow-y scroll
 	background-color: #eee
 	.app-main
 		position relative
 		max-width 1440px
+		min-height 100%
 		background-color #fff
 		margin 0 auto
 		.second-menu

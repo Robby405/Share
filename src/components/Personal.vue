@@ -8,34 +8,32 @@
             <el-menu
               default-active="1"
               class="el-menu-vertical-demo">
-              <el-menu-item index="1">
-                <i class="iconfont icon-wode"></i>
+              <el-menu-item index="1">   
                 <span slot="title">
-                  <router-link to="/personal/profile">我的资料</router-link>
+                  <router-link to="/personal/profile"><i class="iconfont icon-wode"></i>个人资料</router-link>
                 </span>
               </el-menu-item>
-              <el-menu-item index="2">
-                <i class="iconfont icon-dingdan"></i>
+              <el-menu-item index="2">                
                 <span slot="title">
-                  <router-link to="/personal/shares">我分享的</router-link>
+                  <router-link to="/personal/shares"><i class="iconfont icon-dingdan"></i>分享</router-link>
                   </span>
               </el-menu-item>
-              <el-menu-item index="3">
-                <i class="iconfont icon-heart"></i>
+              <el-menu-item index="3">               
                 <span slot="title">
-                  <router-link to="/personal/likes">我喜欢的</router-link>
+                  <router-link to="/personal/likes"><i class="iconfont icon-heart"></i>喜欢</router-link>
                   </span>
               </el-menu-item>
-              <el-menu-item index="4">
-                <i class="iconfont icon-pingjia"></i>
+              <el-menu-item index="4">   
                 <span slot="title">
-                  <router-link to="/personal/comments">我评论的</router-link>
+                  <router-link to="/personal/comments">
+                    <i class="iconfont icon-pingjia"></i>
+                    评论
+                  </router-link>
                 </span>
               </el-menu-item>
               <el-menu-item index="5">
-                <i class="iconfont icon-faxian"></i>
                 <span slot="title">
-                  <router-link to="/personal/follows">我关注的</router-link>
+                  <router-link to="/personal/follows"><i class="iconfont icon-faxian"></i>我关注的</router-link>
                 </span>
               </el-menu-item>
             </el-menu>
@@ -89,7 +87,9 @@ export default {
                 text-decoration none
                 color #333
                 display inline-block
+                vertical-align top
                 width 100%
+                height 100%
           .el-menu-item:hover
             outline 0
             background-color #eee
@@ -100,7 +100,7 @@ export default {
     .content
       display inline-block
       vertical-align top
-      width 35%
+      width 40%
       .el-container
         background-color #fff
         .el-header
@@ -112,5 +112,4 @@ export default {
           padding 0
         .el-main
           padding 0
-          border-top 1px solid #f0f0f0
 </style>

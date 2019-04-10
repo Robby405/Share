@@ -10,6 +10,7 @@ import Share from '../components/personal/Share'
 import Like from '../components/personal/Like'
 import Comment from '../components/personal/Comment'
 import Follow from '../components/personal/Follow'
+import Edit from '../components/Edit'
 Vue.use(Router)
 
 export default new Router({
@@ -47,6 +48,9 @@ export default new Router({
   },{
       path: '/register',
       component: Register
+  },{
+    path: '/edit',
+    component: Edit
   }],
   linkActiveClass: 'active',
   // eslint-disable-next-line
