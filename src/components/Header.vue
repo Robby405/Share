@@ -4,7 +4,7 @@
 			<el-row :gutter="20">
 				<el-col :span="17">
 					<div class="navLeft">
-						<div class="logo"></div>
+						<div class="logo">Share</div>
 						<div class="links">
 							<div class="tab-item">
 								<router-link to="/">首页</router-link>
@@ -26,12 +26,12 @@
 				</el-col>
 				<el-col :span="3">
 					<div class="user" el-dropdown-link>
-						<div class="login" v-if="isLogin">
+						<div class="login" v-if="isLogin==false">
 								<router-link to="/login">登录</router-link>
 								/
 								<router-link to="/register">注册</router-link>
 						</div>
-						<el-dropdown @command="handleCommand">
+						<el-dropdown @command="handleCommand" v-if="isLogin==true">
 							<div class="el-dropdown-link">
 								<img :src="src" alt="" class="avatar">
 								<i class="el-icon-arrow-down el-icon--right"></i>
@@ -91,9 +91,10 @@ export default {
 					.logo
 						display inline-block
 						width 140px
-						height 50px
-						margin 10px 0
-						background url(../assets/life.jpg)
+						height 70px
+						font-size 30px
+						font-family fantasy
+						line-height 70px
 						background-size 140px 50px
 					.links
 						display inline-block
@@ -121,7 +122,7 @@ export default {
 					display flex
 					margin-right 30px
 					height 100%
-					margin-top 20px
+					margin-top 15px
 					input
 						flex 1
 						border: 0;
@@ -149,6 +150,8 @@ export default {
 						transition all .2s
 					.el-dropdown
 						height 60px
+						&:focus
+							outline none
 						.el-dropdown-link
 							display inline-block
 							padding-right 25px

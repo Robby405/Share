@@ -105,13 +105,14 @@
 				</div>
 			</div>
 		</div>
-		
+		<v-footer></v-footer>
 	</div>    
 </template>
 <script>
 import header from './Header'
 import carousel from './Carousel'
 import card from './Card'
+import footer from './Footer'
 export default {
 	data(){
 		return {
@@ -121,7 +122,8 @@ export default {
 	components: {
 		'v-header': header,
 		'v-carousel': carousel,
-		'v-card': card
+		'v-card': card,
+		'v-footer': footer
 	}
 }
 </script>

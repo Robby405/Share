@@ -30,6 +30,7 @@
 	</div>
 </template>
 <script>
+import axios from 'axios'
 export default {
 	// eslint-disable-next-line
 	/* eslint-disable */
@@ -40,7 +41,6 @@ export default {
 				PhoneNumber: '',
 				PhonePsw: '',
         psw: '',
-        pswSecond: ''
 			}
 		}
 	},
@@ -57,12 +57,30 @@ export default {
 				this.GLOBAL.showMess('密码不能为空');
 				return;	
 			}
-			this.$router.push({ path: '/login' })
+			let obj = {
+				name: this.form.name,
+				PhoneNumber: this.form.PhoneNumber,
+				PhonePsw: this.form.PhonePsw, //验证码
+        psw: this.form.psw,
+			}
+			axios.post('http://localhost:3000/users/register', obj)
+			.then(data => {
+				console.log(data);
+				let result = data.data;
+				if(result.Success){
+					this.$router.push({ path: '/login' });
+				}else{
+					this.GLOBAL.showMess(result.msg);
+				}	
+			})
 		},
 		getPhoneTxt(number){
 			let check;
 			check = this.checkCellPhone(number);
 			// console.log(check);
+			if(!check){
+				this.GLOBAL.showMess('输入的手机号不正确，请重新输入');
+			}
 		},
 		checkCellPhone(number){  //验证手机号码的合法性
 			let flag = false;

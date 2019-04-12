@@ -44,10 +44,12 @@
         <router-view></router-view>
       </div>
     </div>
+    <v-footer></v-footer>
   </div>    
 </template>
 <script>
 import header  from "./Header";
+import footer from './Footer'
 export default { 
   data(){
     return {
@@ -56,6 +58,7 @@ export default {
   },
   components: {
     'v-header': header,
+    'v-footer': footer
   }
 }
 </script>
@@ -64,6 +67,7 @@ export default {
   .personal-wrapper
     background-color #fff
     padding-top 115px
+    min-height 753px
     .navbar
       display inline-block
       width 40%

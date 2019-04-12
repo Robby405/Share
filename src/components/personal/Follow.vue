@@ -3,7 +3,7 @@
     <el-container>
       <el-header>我关注的</el-header>
       <el-main>
-        <ul>
+        <ul class="el-main-wrapper">
           <li v-for = " item in lists " :key = "item.Id">
             <img :src="item.src" alt="没有头像" class="avatar">
             <div class="right-cont">
@@ -66,8 +66,8 @@ export default {
 }
 </script>
 <style lang="stylus">
-.el-main
-  li
+.el-main .el-main-wrapper
+  >li
     position relative
     padding 15px 15px 15px 0
     border-top 1px solid #f0f0f0

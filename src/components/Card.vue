@@ -196,6 +196,7 @@ export default {
       transition all .5s
     .el-main
       padding 10px
+      overflow hidden
       .img
         position relative
         width 100%

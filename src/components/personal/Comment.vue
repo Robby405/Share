@@ -3,7 +3,7 @@
     <el-container>
       <el-header>评论</el-header>
       <el-main>
-        <ul>
+        <ul class="el-main-wrapper">
           <li v-for = " item in lists " :key = "item.Id">
             <img :src="item.src" alt="没有头像" class="avatar">
             <div class="right-cont">
