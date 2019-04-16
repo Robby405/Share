@@ -7,6 +7,8 @@
  * @copyright Chen, Yi-Cyuan 2014-2017
  * @license MIT
  */
+// eslint-disable-next-line 
+/* eslint-disable */ 
 (function () {
   'use strict';
 

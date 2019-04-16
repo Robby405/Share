@@ -4,9 +4,9 @@
       <el-main>
         <div class="img">
           <img src="https://cdn.dribbble.com/users/59947/screenshots/6133129/shipwreck_island_dribbble.jpg" alt="">
-          <div class="icon">
+          <!-- <div class="icon">
               <i class="el-icon-circle-plus" @click="dialogVisible = true"></i>
-          </div>
+          </div> -->
           <div class="btns">
             <el-button>
               <i class="iconfont icon-heart-fill"></i>
@@ -34,40 +34,35 @@
         <span>Luova Studio</span>
       </a>
     </h2>
-    <el-dialog
+    <!-- <el-dialog
       :visible.sync="dialogVisible"
       width="40%"
       >
-      <!--<span>这是一段信息</span>
-      <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-      </span> -->
       <span>
         <el-container>
           <el-header>
             <el-row :gutter="10">
               <el-col :span="2">
                 <a href="">
-                  <img src="https://picjumbo.com/wp-content/uploads/woman-on-carousel-swing-ride_free_stock_photos_picjumbo_HNCK8794-2210x1473.jpg" alt="">
+                  <img :src="cardInfo.avatar" alt="">
                 </a>
               </el-col>
               <el-col :span="16">
-                <h1>Racing car of F1</h1>
-                <h2>by Anton Firtsler (kit8) for Kit8</h2>
+                <h1>{{ cardInfo.title }}</h1>
+                <h2>{{ cardInfo.info }}</h2>
               </el-col>
               <el-col :span="6">
-                <el-button>
-                  <i class="iconfont icon-heart-fill"></i>
-                  Like
+                <el-button :class="{ isLiked : follow  }" @click="followCncel(cardInfo.id)">
+                  <i class="iconfont icon-heart-fill" ></i>
+                  关注
                 </el-button>
               </el-col>
             </el-row>
           </el-header>
           <el-main>
             <el-carousel>
-              <el-carousel-item v-for="item in 4" :key="item">
-                <h3>{{ item }}</h3>
+              <el-carousel-item v-for="item in cardInfo.images" :key="item.id">
+                <img :src="item.images" alt="图片找不到了"/>
               </el-carousel-item>
             </el-carousel>
           </el-main>
@@ -171,7 +166,7 @@
           </el-container>
         </el-container>  
       </span>
-    </el-dialog>
+    </el-dialog> -->
 
   </div>
     
@@ -180,8 +175,11 @@
 export default {
   data(){
     return {
-      dialogVisible: false
+      dialogVisible: false,
     }
+  },
+  methods: {
+    
   },
 }
 </script>
@@ -191,9 +189,8 @@ export default {
   .el-container
     background-color #eee
     padding-bottom 10px
-  .el-container:hover .btns
+    .el-container:hover .btns
       display block
-      transition all .5s
     .el-main
       padding 10px
       overflow hidden
@@ -297,10 +294,14 @@ export default {
               font-weight normal
               color #999
           .el-col-6
+            .el-button.isLiked
+              color #ff410f
+              border-color #ff410f
+              background-color rgba(255, 65, 15, .1)
             .el-button:hover
-              color #666
-              border-color #666
-              background-color #fff
+              color #ff410f !important
+              border-color #ff410f !important
+              background-color rgba(255, 65, 15, .1) !important 
         .el-main
           padding 0
           .el-carousel__container

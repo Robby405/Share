@@ -22,6 +22,17 @@
         </ul>
       </el-main>
     </el-container>
+    <el-dialog
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose">
+      <span>确认取消关注吗？</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="dialogConfirm">确 定</el-button>
+        <el-button @click="dialogCancel">取 消</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -45,7 +56,8 @@ export default {
         isFollowed: true,
         FollowContent: '已关注'
       }],
-      
+      dialogVisible: false,
+      message: {}
     }
   },
   methods: {
@@ -56,42 +68,61 @@ export default {
       item.FollowContent = "已关注";
     },
     FollowCancel(item,event){
+      this.message = item;
       if(item.FollowContent === '已关注'){
         return;
-      }else if(item,event){
-        alert('取消关注');
+      }else if(item.FollowContent === '取消关注'){
+        this.dialogVisible = true;
       }
+    },
+    dialogConfirm(){
+      console.log(this.message);
+      this.lists.forEach((item) => {
+        if(item.userName === this.message.userName){
+          this.lists.pop(item);
+        }
+      })
+      this.dialogVisible = false;
+    },
+    dialogCancel(){
+      this.dialogVisible = false;
+    },
+    handleClose(){
+      this.dialogVisible = false;
     }
   }
 }
 </script>
 <style lang="stylus">
-.el-main .el-main-wrapper
-  >li
-    position relative
-    padding 15px 15px 15px 0
-    border-top 1px solid #f0f0f0
-    .avatar
-      display inline-block
-      width 48px
-      height 48px
-      border-radius 50%
-      border 1px solid #f0f0f0
-    .right-cont
-      display inline-block
-      vertical-align top
-      margin-left 20px
-      .info
-        font-size 15px
-        margin-top 5px
-        .el-button--mini, .el-button--mini.is-round
-          padding 4px 7px
-          position absolute
-          right 10px
-          top 20px
-          min-width 70px
-      .intro
-        font-size 12px
-        margin-top 5px
-        color #999
+.el-container
+  .el-main .el-main-wrapper
+    >li
+      position relative
+      padding 15px 15px 15px 0
+      border-top 1px solid #f0f0f0
+      .avatar
+        display inline-block
+        width 48px
+        height 48px
+        border-radius 50%
+        border 1px solid #f0f0f0
+      .right-cont
+        display inline-block
+        vertical-align top
+        margin-left 20px
+        .info
+          font-size 15px
+          margin-top 5px
+          .el-button--mini, .el-button--mini.is-round
+            padding 4px 7px
+            position absolute
+            right 10px
+            top 20px
+            min-width 70px
+        .intro
+          font-size 12px
+          margin-top 5px
+          color #999
+.el-dialog__wrapper
+  overflow-y scroll
 </style>

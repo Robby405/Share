@@ -11,13 +11,15 @@ import Like from '../components/personal/Like'
 import Comment from '../components/personal/Comment'
 import Follow from '../components/personal/Follow'
 import Edit from '../components/Edit'
+import Details from '../components/Details'
 Vue.use(Router)
 
 export default new Router({
   mode: "history",
   routes: [{
     path: '/',
-    component: MainPage
+    component: MainPage,
+    name: 'main'
   }, {
     path: '/find',
     component: Find
@@ -51,6 +53,10 @@ export default new Router({
   },{
     path: '/edit',
     component: Edit
+  },{
+    path: '/details/:id',
+    component: Details,
+    name: 'details'
   }],
   linkActiveClass: 'active',
   // eslint-disable-next-line
