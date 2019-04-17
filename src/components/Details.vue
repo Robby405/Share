@@ -30,6 +30,9 @@
             <img :src="item" alt="图片找不到了"/>
           </el-carousel-item>
         </el-carousel>
+        <div class="txt-wrapper">
+          <p v-for="item in list.txts" :key="item.id">{{item}}</p>
+        </div>
       </el-main>
       <el-container>
         <el-main>
@@ -44,11 +47,11 @@
                 <a href="javascript:;" @click="iLikes">我喜欢</a>
               </div>
               <ol class="comments">
-                <li class="comment" v-for="item in comments" :key="item.id">
+                <li class="comment" v-for="(item,index) in comments" :key="item.id" v-if="index < pageSize">
                   <h2>
                     <a href="#">
                       <img :src="item.avatar" alt="">
-                      {{ item.username }}
+                      {{ item.username }}{{index}}{{ pageSize}}
                     </a>
                     <span class="nudge-right"></span>
                   </h2>
@@ -74,7 +77,7 @@
             @current-change="currentChange">
           </el-pagination>
           <div class="writeComment">
-            <textarea placeholder="请写下你的评论..." v-model="commentContent"></textarea>
+            <textarea placeholder="请写下你的评论..." v-model="commentContent" rows="4"></textarea>
             <el-button type="primary" size="mini" round @click="publishComment">发表</el-button>
           </div>
         </el-main>
@@ -92,7 +95,7 @@
                 关注
               </el-button>
             </div>
-            <p class="info">jkkjsajlkds'aslsa;'dlsaddsal;</p>
+            <p class="info">分享旅途的风景</p>
           </div>
         </el-aside>
       </el-container>
@@ -108,7 +111,7 @@ export default {
   },
   data() {
 		return {
-			list: {
+      list: {
 				id: 0,
 				avatar: "https://picjumbo.com/wp-content/uploads/woman-on-carousel-swing-ride_free_stock_photos_picjumbo_HNCK8794-2210x1473.jpg",
 				title: 'Racing car of F1',
@@ -120,6 +123,12 @@ export default {
 					'https://66.media.tumblr.com/f5460d1e1e8b5a2a94cbea24dd85084e/tumblr_o4u21mqbfL1u60tx6o1_1280.jpg',
 					'https://66.media.tumblr.com/266fc6143cb78fef72f084c429ef8d18/tumblr_o3pc5xJlFG1u60tx6o1_1280.jpg',
 					'https://66.media.tumblr.com/2f271139aa97336c565e1e390d55a9ed/tumblr_o4u1dacAx01u60tx6o1_1280.jpg'
+        ],
+        txts: [
+          '今天晚上细心数了一下，在咱们国家34个省级行政区中，自己已经不知不觉走过了19个，或是出差执行任务，或是旅行放松心情，领略到了西南地区的大好河山，欣赏到了江南地区的小桥流水，还感受到了西北荒芜地区的残酷无情。',
+          '青山绿水环绕，高楼建筑叠起，秀丽景色延绵。除了北上广以外，这是我见过的最繁华的都市。夜晚的重庆有小香港之称，其夜景不亚于上海的外滩，不输于北京的世贸天阶，夜晚里的洪崖洞更被称为中国版的千与千寻，美的就像一个“梦”。见过北京13号线地面上的地铁，却从没见过重庆空中的轻轨，第一次到重庆乘坐轻轨时有一种农村人去城里赶大集的感觉，感到很新鲜，尤其是看到2号线李子坝站轻轨穿越居民楼的场景，内心更是惊奇不已。重庆是一个“网红景点”集结地，嘉陵江畔磁器口古镇，《从你的全世界路过》电影拍摄地点江畔寻花咖啡屋，网红书店钟书阁，两江交汇朝天门以及南滨路的江景等等。重庆是一座很有空间感、层次感的城市，在一座商厦里一楼可能是五楼，五楼亦可能是一楼，大家可以自行体会。',
+          '不到重庆，不知道什么是火辣热情；不到重庆，不知道什么是正宗火锅。作为超级能吃咸、能吃麻、能吃辣的另类山东大汉，火锅成为我的最爱，每次到重庆都是必点，要么两天三顿，要么三天四顿。重庆的火锅确实不同于北方的火锅，北方主要以牛羊肉为主、蔬菜为辅，而重庆以鸭肠、毛肚为主，牛羊肉蔬菜为辅，当然这也看个人的吃法。北方火锅的辣往往轻柔一些，而重庆火锅的辣让人叫服。另外，重庆串串香也是全国出了名的，色、香、味、辣俱全，并且吃上去更小资、经济、实惠一些，适合三五人聚餐。',
+          '简单说完重庆的美景、美食，再聊聊重庆的美女们，这里我想重点说一下重庆大妈。北方的大妈往往都是淳朴保守、衣着简单，顶多烫个大波浪，而重庆大妈即使说不上浓妆艳抹，也敢说是在追逐时代潮流，衣着打扮追求一种休闲时尚。无论是公交上还是轻轨上，都可以见到大妈下着丝袜、上批风衣、香水味浓，让人感觉到非常潇洒豁达的生活态度，其实也值得北方大妈借鉴。'
         ],
         comments: [{
           id: 1,
@@ -193,6 +202,7 @@ export default {
         this.comments = this.list.comments[i];
       }
     }
+    let ID = this.$route.path.split('/')[2];
   },
   methods: {
     currentChange(index){
@@ -286,11 +296,10 @@ export default {
 }
 </script>
 <style lang="stylus">
-  @import url('//at.alicdn.com/t/font_1080948_48cfqguzrv.css');
+@import url('//at.alicdn.com/t/font_1080948_c1336oo0x77.css');
 .details-container
   background-color #fff
-  width 65%
-  max-width 1200px
+  width 1200px
   margin 0 auto
   >.el-container.is-vertical 
     margin-bottom 80px
@@ -321,29 +330,44 @@ export default {
       .el-button.isLiked
         color #ff410f
         border-color #ff410f
-        background-color rgba(255, 65, 15, .1)
+        background-color rgba(255, 65, 15, .1) 
       .el-button:hover
-        color rgba(255, 65, 15, .6) !important
-        border-color rgba(255, 65, 15, .6) !important
-        background-color rgba(255, 65, 15, .1) !important 
+        color rgba(255, 65, 15, .6) 
+        border-color rgba(255, 65, 15, .6)
+        background-color rgba(255, 65, 15, .1)
+      .el-button.isLiked:hover
+        color #ff410f
+        border-color #ff410f
+        background-color rgba(255, 65, 15, .1) 
       .el-button + .el-button
         margin-left 0 !important
     .el-main
       padding 0
-      .el-carousel__container
-        height 500px
-        .el-carousel__item img
-          width 100%
-          height 100%         
-        .el-carousel__item:nth-child(2n) 
-          background-color #99a9bf      
-        .el-carousel__item:nth-child(2n+1)
-          background-color #d3dce6
-      .el-carousel__indicators
-        li
-          border-top none
+      .el-carousel 
+        .el-carousel__container
+          height 500px
+          .el-carousel__item img
+            width 100%
+            height 100%         
+          .el-carousel__item:nth-child(2n) 
+            background-color #99a9bf      
+          .el-carousel__item:nth-child(2n+1)
+            background-color #d3dce6
+        .el-carousel__indicators
+          li
+            border-top none
+      .txt-wrapper
+        width 80%
+        margin 60px auto
+        >p
+          color #444
+          margin-top 30px
     .el-container
-      margin-top 30px
+      width 80%
+      margin 0 auto
+      margin-top 15px
+      border-top 1px solid #f0f0f0
+      padding-top 50px
       .el-main
         width 60%
         padding 0 20px
@@ -384,7 +408,7 @@ export default {
                 font-size 15px
                 line-height 1.4em
                 color #555
-                border-bottom 1px solid #ddd
+                border-bottom 1px dashed #f0f0f0
                 border-top none
                 h2
                   margin  0 0 2px 0
@@ -418,7 +442,8 @@ export default {
                   font-weight normal
                   padding-left 15px   
                   &:hover
-                    color #ff410f
+                    cursor pointer
+                    color rgba(255, 65, 15, .5)
                   .liked
                     color #ff410f
                 .comment-meta
@@ -437,26 +462,27 @@ export default {
             padding 0  
         .writeComment
           display flex
-          margin-top 15px
+          margin-top 40px
           >textarea
             width 75%
-            line-height 28px
-            height 28px
             border-color #ddd
-            border-radius 15px
+            border-radius 4px
             padding-left 10px
+            line-height 20px
             flex 1
             &:focus
               outline none
           >.el-button
             margin-left 20px
+            margin-top 55px
             padding 7px 25px
+            height 28px
             width auto
       .el-aside
         width 40% !important
         .author-info
           width 75%
-          margin 0 auto
+          margin-left 23%
           box-shadow: 3px 3px 2px #b7b7b7
           border 1px solid #f0f0f0
           img
@@ -478,8 +504,16 @@ export default {
               color #ff410f
               border-color #ff410f
               background-color rgba(255, 65, 15, .1)
+            .isFollowed:hover
+              color #ff410f
+              border-color #ff410f
+              background-color rgba(255, 65, 15, .1)
             .el-button
               padding 10px 20px
+            .el-button:hover
+              color rgba(255, 65, 15, .6) !important
+              border-color rgba(255, 65, 15, .6) !important
+              background-color rgba(255, 65, 15, .1) !important 
             .el-button + .el-button
               margin 0
           .info

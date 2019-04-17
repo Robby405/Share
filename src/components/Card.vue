@@ -3,7 +3,7 @@
     <el-container>
       <el-main>
         <div class="img">
-          <img src="https://cdn.dribbble.com/users/59947/screenshots/6133129/shipwreck_island_dribbble.jpg" alt="">
+          <img :src="cardInfo.images[0]" alt="">
           <!-- <div class="icon">
               <i class="el-icon-circle-plus" @click="dialogVisible = true"></i>
           </div> -->
@@ -17,21 +17,21 @@
       </el-main>
       <el-footer>
         <ul>
-          <li>
-            <i class="el-icon-edit-outline"></i>
-            <span>999</span>
+          <li class="pingjia">
+            <i class="iconfont icon-pingjia"></i>
+            <span>{{ cardInfo.comments }}</span>
           </li>
           <li>
-            <i class="iconfont icon-heart-fill"></i>
-            <span>888</span>
+            <i class="iconfont icon-heart"></i>
+            <span>{{ cardInfo.likes }}</span>
           </li>
         </ul>
       </el-footer>
     </el-container>
     <h2 class="attribution">
       <a href="" class="hoverable">
-        <img src="https://picjumbo.com/wp-content/uploads/woman-on-carousel-swing-ride_free_stock_photos_picjumbo_HNCK8794-2210x1473.jpg" alt="" class="photo">
-        <span>Luova Studio</span>
+        <img :src="cardInfo.avatar" alt="" class="photo">
+        <span>{{ cardInfo.info }}</span>
       </a>
     </h2>
     <!-- <el-dialog
@@ -173,6 +173,7 @@
 </template>
 <script>
 export default {
+  props: ['cardInfo'],
   data(){
     return {
       dialogVisible: false,
@@ -184,8 +185,11 @@ export default {
 }
 </script>
 <style lang="stylus">
-@import url('//at.alicdn.com/t/font_1080948_lmezl2ohfk.css');
+@import url('//at.alicdn.com/t/font_1080948_hr9j0h4inz5.css');
 .card
+  padding-bottom 2px
+  &:hover
+    box-shadow 2px 2px 7px #666  
   .el-container
     background-color #eee
     padding-bottom 10px
@@ -197,8 +201,10 @@ export default {
       .img
         position relative
         width 100%
+        transition 0.2s
         img 
           width 100%
+          height 160px
           max-height 160px
       .icon
         position absolute
@@ -224,21 +230,25 @@ export default {
             margin-left 2px
             vertical-align bottom
     .el-footer
-      height 12px !important
+      height 20px !important
       padding 0 10px
-      ul li
-        float right
-        list-style none
-        color #666
-        font-size 11px
-        margin-left 11px
-        .iconfont
+      ul
+        overflow hidden
+        li
+          float right
+          list-style none
+          color #666
           font-size 11px
-        i
-          margin-right 3px
-          color #ff410f
-        span
-          vertical-align middle
+          margin-left 11px
+          line-height 20px
+          .iconfont
+            font-size 15px
+          i
+            font-weight 700
+            margin-right 3px
+            color #ff410f
+          span
+            vertical-align top
   .attribution
     font-size 13px !important
     margin-top 10px

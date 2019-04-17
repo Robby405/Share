@@ -28,6 +28,7 @@
         <vue-wangeditor id="editor" :options="options" v-model="content" :init-content="initContent"></vue-wangeditor>
       </div>
     </div> 
+    <v-footer></v-footer>
     <el-dialog
     title="提示"
     :visible.sync="dialogVisible"
@@ -43,8 +44,11 @@
   </div>
 </template>
 <script>
-
+import footer from './Footer'
 export default {
+  components: {
+    'v-footer': footer
+  },
   data(){
     return {
       dialogVisible: false,
@@ -90,7 +94,10 @@ export default {
       this.dialogVisible = false;
     },
     dialogCancel(){
-      this.dialogCancel = false;
+      this.dialogVisible = false;
+    },
+    handleClose(){
+      this.dialogVisible = false;
     }
   }
 }
@@ -125,6 +132,7 @@ export default {
     width 45%
     margin 0 auto
     margin-top 30px
+    min-height 767px
     .writeCover
       width 100%
       min-height 192px

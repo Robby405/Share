@@ -20,12 +20,13 @@
 				</el-col>
 				<el-col :span="4">
 					<div class="search">
-						<input value placeholder="请输入内容">
+						<input value placeholder="请输入内容" v-model="seachword">
 						<icon name="search" width="24" height="24"></icon>
+						<el-button @click="search()"></el-button>
 					</div>
 				</el-col>
 				<el-col :span="3">
-					<div class="user" el-dropdown-link>
+					<div class="user">
 						<div class="login" v-if="isLogin==false">
 								<router-link to="/login">登录</router-link>
 								/
@@ -36,7 +37,7 @@
 								<img :src="src" alt="" class="avatar">
 								<i class="el-icon-arrow-down el-icon--right"></i>
 							</div>
-							<el-dropdown-menu slot="dropdown" v-if="!isLogin">
+							<el-dropdown-menu slot="dropdown">
 								<el-dropdown-item command="/edit">发表</el-dropdown-item>
 								<el-dropdown-item command="/personal/likes">喜欢</el-dropdown-item>
 								<el-dropdown-item command="/login">注销</el-dropdown-item>
@@ -54,14 +55,23 @@
 export default {
 	data(){
 		return {
-			isLogin: false,
+			isLogin: true,
 			src: "//upload.jianshu.io/users/upload_avatars/3678149/b8a58e70-1126-48c9-97e2-8f21a31dfa94.png?imageMogr2/auto-orient/strip|imageView2/1/w/144/h/144/format/webp",
-
+			seachword: ''
 		}
 	},
 	methods: {
 		handleCommand(command) {
+			console.log(this.$router);
 			this.$router.push(command);
+		},
+		search(){
+			if(this.seachword){
+				this.$router.push('/search');
+			}else{
+				this.GLOBAL.showMess('请输入查找内容');
+			}
+			
 		}
 	}
 }
@@ -138,6 +148,9 @@ export default {
 						white-space: nowrap
 					.svg-icon
 						margin-top 6px
+					.el-button
+						margin-left -30px
+						opacity 0
 				.user
 					display inline-block
 					.login a

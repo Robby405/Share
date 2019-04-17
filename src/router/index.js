@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import MainPage from '../components/Mainpage'
 import Find from '../components/Find'
+import Search from '../components/Search'
 import Personal from '../components/Personal'
 import Login from '../components/Login'
 import Register from '../components/Register'
@@ -57,6 +58,10 @@ export default new Router({
     path: '/details/:id',
     component: Details,
     name: 'details'
+  },{
+    path: '/search',
+    component: Search,
+    name: 'search'
   }],
   linkActiveClass: 'active',
   // eslint-disable-next-line
