@@ -1,12 +1,12 @@
 <template>
-  <div class="app-main">
-    <div class="share-wrapper">
+  <div class="share-wrapper">
+    <div class="share-container">
       <div class="title">
         <a href="/">分享</a>
         <div class="actions">
           <span>写文章</span>
           <el-button @click="backTo()">退出分享</el-button>
-          <el-button type="primary">
+          <el-button type="primary" @click="publish()">
             <i class="iconfont icon-icon_fabu"></i>
             发布分享
           </el-button>
@@ -36,8 +36,8 @@
     :before-close="handleClose">
     <span>{{msg}}</span>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="dialogCancel">取 消</el-button>
       <el-button type="primary" @click="dialogConfirm">确 定</el-button>
+      <el-button @click="dialogCancel">取 消</el-button>  
     </span>
   </el-dialog>   
   
@@ -89,6 +89,9 @@ export default {
      this.dialogVisible = true;
      this.msg = '确定关闭吗？（关闭后不会保存任何信息）'
     },
+    publish(){
+      this.$router.push('/');
+    },
     dialogConfirm(){
       this.$router.push('/');
       this.dialogVisible = false;
@@ -105,76 +108,81 @@ export default {
 <style lang="stylus">
 @import url('//at.alicdn.com/t/font_1080948_9k89htvjxj6.css');
 .share-wrapper
-  .title
-    height 70px
-    line-height 70px
-    border-bottom 1px solid #f0f0f0
-    font-size 16px
-    a
-      float left
-      margin-left 20px
-      font-size 20px
-      text-decoration none
-      color #666
-    .actions
-      width 45%
+  width 1200px
+  margin 0 auto
+  background-color #fff
+  .share-container
+    .title
+      height 70px
       line-height 70px
+      border-bottom 1px solid #f0f0f0
+      font-size 16px
+      a
+        float left
+        margin-left 20px
+        font-size 20px
+        text-decoration none
+        color #666
+      .actions
+        width 60%
+        line-height 70px
+        margin 0 auto
+        >span
+          display inline-block
+          text-align center
+        .el-button
+          float right
+          margin-top 15px
+          margin-left 10px
+          height 40px
+    .editor-wrapper
+      width 60%
       margin 0 auto
-      >span
-        display inline-block
-        text-align center
-      .el-button
-        float right
-        margin-top 15px
-        margin-left 10px
-        height 40px
-  .editor-wrapper
-    width 45%
-    margin 0 auto
-    margin-top 30px
-    min-height 767px
-    .writeCover
-      width 100%
-      min-height 192px
-      text-align center
-      color #808080
-      line-height 192px
-      background-color #f7f8f9
-      .writeCover-previewWapper
-        height 100%
-        justify-content center
-        .upload-wrapper
-          display block
-          cursor pointer
-          .upload-input
-            display none
-          .icon-camera
-            font-size 42px
-            color rgba(0,0,0,0.2)
-    .edit-title
-      margin 16px 0
-      border 0
-      width 100%
-      .Input
-        height 44px
-        min-height 44px
+      margin-top 30px
+      min-height 767px
+      .writeCover
         width 100%
-        display block
+        min-height 192px
+        text-align center
+        color #808080
+        line-height 192px
+        background-color #f7f8f9
+        .writeCover-previewWapper
+          height 100%
+          justify-content center
+          .upload-wrapper
+            display block
+            cursor pointer
+            .upload-input
+              display none
+            .icon-camera
+              font-size 42px
+              color rgba(0,0,0,0.2)
+      .edit-title
+        margin 16px 0
         border 0
-        font-size 32px
-        line-height 1.4
-        font-weight 600
-        outline none
-        box-shadow none
-    #editor
-      .w-e-toolbar
-        background-color #fff !important
-        border-top 1px solid rgb(204,204,204) !important
-        border-bottom 1px solid rgb(204,204,204) !important
-        border-left none !important
-        border-right none !important
-      .w-e-text-container
-        border none !important
-        .w-e-text
-          overflow hidden !important
+        width 100%
+        .Input
+          height 44px
+          min-height 44px
+          width 100%
+          display block
+          border 0
+          font-size 32px
+          line-height 1.4
+          font-weight 600
+          outline none
+          box-shadow none
+          resize none
+      #editor
+        .w-e-toolbar
+          background-color #fff !important
+          border-top 1px solid rgb(204,204,204) !important
+          border-bottom 1px solid rgb(204,204,204) !important
+          border-left none !important
+          border-right none !important
+        .w-e-text-container
+          border none !important
+          .w-e-text
+            overflow hidden !important
 </style>

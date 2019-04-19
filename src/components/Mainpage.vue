@@ -76,7 +76,7 @@
 					</el-col>
 					<el-col :span="6">
 						<div class="rec-item">
-							<i class="iconfont icon-award"></i>
+							<i class="iconfont icon-aperture"></i>
 							<div class="rec-name">编辑购物</div>
 						</div>
 					</el-col>

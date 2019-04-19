@@ -79,6 +79,8 @@ export default {
       .el-form-item__content
         .el-button.is-round
           padding 10px 35px
+        .el-textarea textarea
+          resize none
     .save
       border-bottom none
       
